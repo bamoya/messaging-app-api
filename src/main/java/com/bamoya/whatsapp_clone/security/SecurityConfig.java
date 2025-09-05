@@ -4,6 +4,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -19,7 +20,9 @@ import org.springframework.web.filter.CorsFilter;
 @EnableWebSecurity
 public class SecurityConfig {
 
-  List<String> ALLOWED_ORIGINS = List.of("http://localhost:4200");
+  @Value("${application.origins.allowed}")
+  List<String> ALLOWED_ORIGINS;
+
   String[] ALLOWED_ENDPOINTS = {
     "/auth/**",
     "/v2/api-docs",

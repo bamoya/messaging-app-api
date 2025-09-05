@@ -22,9 +22,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
             password =
                 @OAuthFlow(
                     authorizationUrl =
-                        "http://localhost:9090/realms/whatsapp-clone/protocol/openid-connect/auth",
+                        "http://localhost:9090/realms/messaging-app/protocol/openid-connect/auth",
                     tokenUrl =
-                        "http://localhost:9090/realms/whatsapp-clone/protocol/openid-connect/token")))
+                        "http://localhost:9090/realms/messaging-app/protocol/openid-connect/token")))
 public class WhatsappCloneApplication {
 
   public static void main(String[] args) {
