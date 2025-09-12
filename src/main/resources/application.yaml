@@ -1,32 +1,11 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://messaging-app-db:5432/whatsapp_clone
-    username: bamoya
-    password: bamoya
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
-    properties:
-      hibernate:
-        format_sql: false
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:9090/realms/messaging-app
-
+# This file contains common properties shared across all profiles.
+# Spring Boot will always load this file first.
 springdoc:
   default-produces-media-type: application/json
-
 
 application:
   file:
     uploads:
       media-output-path: ./uploads
   origins:
-    allowed: http://localhost:4200
-
-
+    allowed: http://localhost:4200, http://app-ui:4200, http://keycloak:9090

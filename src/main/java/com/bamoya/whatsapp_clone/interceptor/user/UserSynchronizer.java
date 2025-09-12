@@ -23,15 +23,15 @@ public class UserSynchronizer {
         .ifPresent(
             email -> {
               log.info("Synchronizing user with email {}", email);
-              Optional<User> dbUser = userRepository.findByEmail(email);
+              //              Optional<User> dbUser = userRepository.findByEmail(email);
               User idpUser = userMapper.fromToken(token.getClaims());
               // if the userId changed delete the user and create new one ( avoid duplications )
-              dbUser.ifPresent(
-                  user -> {
-                    if (!user.getId().equals(idpUser.getId())) {
-                      userRepository.delete(user);
-                    }
-                  });
+              //              dbUser.ifPresent(
+              //                  user -> {
+              //                    if (!user.getId().equals(idpUser.getId())) {
+              //                      userRepository.delete(user);
+              //                    }
+              //                  });
               userRepository.save(idpUser);
             });
   }

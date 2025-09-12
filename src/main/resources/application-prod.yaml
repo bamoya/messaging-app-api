@@ -1,0 +1,22 @@
+# These properties are only active when the 'docker' profile is enabled.
+# Spring Boot automatically loads this file when `spring.profiles.active=prod`.
+spring:
+  # Inside the Docker network, we use the service names as hostnames
+  datasource:
+    url: jdbc:postgresql://postgres:5432/whatsapp_clone
+    username: bamoya
+    password: bamoya
+  jpa:
+    hibernate:
+      ddl-auto: update # or 'validate' in production
+    show-sql: true # Often useful to see SQL in container logs
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:9090/realms/messaging-app

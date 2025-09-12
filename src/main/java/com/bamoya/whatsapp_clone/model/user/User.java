@@ -4,7 +4,9 @@ import static java.time.LocalDateTime.now;
 
 import com.bamoya.whatsapp_clone.model.chat.Chat;
 import com.bamoya.whatsapp_clone.model.common.BaseAuditingEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -41,10 +43,10 @@ public class User extends BaseAuditingEntity {
   private String email;
   private LocalDateTime lastSeen;
 
-  @OneToMany(mappedBy = "sender")
+  @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Chat> chatsAsSender;
 
-  @OneToMany(mappedBy = "recipient")
+  @OneToMany(mappedBy = "recipient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Chat> chatsAsRecipient;
 
   @Transient

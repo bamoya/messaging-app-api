@@ -1,0 +1,21 @@
+# These properties are only active when the 'dev' profile is enabled.
+# Spring Boot automatically loads this file when `spring.profiles.active=dev`.
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/whatsapp_clone
+    username: bamoya
+    password: bamoya
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:9090/realms/messaging-app
